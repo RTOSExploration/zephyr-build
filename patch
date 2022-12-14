@@ -1,0 +1,24 @@
+diff --git a/cmake/compiler/gcc/target.cmake b/cmake/compiler/gcc/target.cmake
+index a98a83cfbc..c5b54d2fff 100644
+--- a/cmake/compiler/gcc/target.cmake
++++ b/cmake/compiler/gcc/target.cmake
+@@ -36,7 +36,8 @@ if("${SPARSE}" STREQUAL "y")
+     endif()
+   endif()
+ else() # SPARSE
+-  find_program(CMAKE_C_COMPILER ${CROSS_COMPILE}${CC} PATHS ${TOOLCHAIN_HOME} NO_DEFAULT_PATH)
++  #find_program(CMAKE_C_COMPILER ${CROSS_COMPILE}${CC} PATHS ${TOOLCHAIN_HOME} NO_DEFAULT_PATH)
++  set(CMAKE_C_COMPILER wllvm)
+ endif()
+ 
+ if(${CMAKE_C_COMPILER} STREQUAL CMAKE_C_COMPILER-NOTFOUND)
+@@ -55,7 +56,8 @@ else()
+     set(cplusplus_compiler ${CMAKE_C_COMPILER})
+   endif()
+ endif()
+-find_program(CMAKE_CXX_COMPILER ${cplusplus_compiler} PATHS ${TOOLCHAIN_HOME} NO_DEFAULT_PATH)
++#find_program(CMAKE_CXX_COMPILER ${cplusplus_compiler} PATHS ${TOOLCHAIN_HOME} NO_DEFAULT_PATH)
++set(CMAKE_CXX_COMPILER wllvm++)
+ 
+ set(NOSTDINC "")
+ 
